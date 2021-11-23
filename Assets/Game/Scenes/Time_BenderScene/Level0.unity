@@ -17924,7 +17924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1536
 --- !u!1 &1283904935
 GameObject:
   m_ObjectHideFlags: 0
@@ -31053,8 +31053,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!23 &5458045048539718024
-MeshRenderer:
+--- !u!33 &5458045048540853412
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458045048541920522}
+  m_Mesh: {fileID: 4300000, guid: 04118100bea46ec4bb6ff0dcb40eb907, type: 3}
+--- !u!1 &5458045048541920522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5458045048542181464}
+  - component: {fileID: 5458045048540853412}
+  - component: {fileID: 3637627814949108110}
+  - component: {fileID: 6034331224913819278}
+  - component: {fileID: 5458045048541920524}
+  - component: {fileID: 5458045048541920523}
+  m_Layer: 10
+  m_Name: BillBoard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &5458045048541920523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458045048541920522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46a57fa3f72259544907c9dcd19c6444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionMaterial: {fileID: 2100000, guid: edcd35370e83bcc4682b85dd77f17f6f, type: 2}
+--- !u!137 &5458045048541920524
+SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31068,7 +31110,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -31094,35 +31136,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &5458045048540853412
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5458045048541920522}
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300000, guid: 04118100bea46ec4bb6ff0dcb40eb907, type: 3}
---- !u!1 &5458045048541920522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5458045048542181464}
-  - component: {fileID: 5458045048540853412}
-  - component: {fileID: 5458045048539718024}
-  - component: {fileID: 3637627814949108110}
-  - component: {fileID: 6034331224913819278}
-  m_Layer: 10
-  m_Name: BillBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0, y: 1.531283, z: 0}
+    m_Extent: {x: 2.2139494, y: 1.531283, z: 0.8056934}
+  m_DirtyAABB: 0
 --- !u!4 &5458045048542181464
 Transform:
   m_ObjectHideFlags: 0
