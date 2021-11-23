@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - BreakableObject
+  - Human
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - DroppedItem
   - DropPlacePoint
   - DropChecker
-  - 
-  - 
+  - Human
+  - DangerItem
   - 
   - 
   - 

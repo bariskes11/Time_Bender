@@ -12,26 +12,52 @@ public class FpsController : MonoBehaviour
     private float cameraPitch;
     private Vector3 lastPos;
     private Vector3 deltaPos;
-    Joystick joystickInput;
-    // Start is called before the first frame update
+
+    #region Properties
+    private bool isControlEnabled;
+    public bool IsControlEnabled
+    {
+        get => this.IsControlEnabled;
+        set => this.isControlEnabled = true;
+    }
+
+    #endregion
+
+    #region Unity Methods
+
+    
     void Start()
     {
-   joystickInput=     GameObject.FindObjectOfType<Joystick>();
+        EventManager.OnGameStarted.AddListener(this.EnableControls);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-      Vector2 mouseMovement=  MouseMovement();
+        if (!this.isControlEnabled)
+            return;
+
+        Vector2 mouseMovement = MouseMovement();
         if (mouseMovement != Vector2.zero)
         {
-            transform.localEulerAngles = new Vector3((mouseMovement.y) * mouseSensitivity
+          Vector3 dir=  new Vector3((mouseMovement.y) * mouseSensitivity
 
-                , (-mouseMovement.x) * mouseSensitivity, transform.localEulerAngles.z);
+               , (-mouseMovement.x) * mouseSensitivity, 0);
+
+
+            transform.localEulerAngles += dir;
         }
-      //transform.localRotation=  Quaternion.Slerp(this.transform.localRotation, new Quaternion( joystickInput.Direction.x, 
-      //    joystickInput.Direction.y, this.transform.localRotation.z, this.transform.localRotation.w),0.1F);
+        //transform.localRotation=  Quaternion.Slerp(this.transform.localRotation, new Quaternion( joystickInput.Direction.x, 
+        //    joystickInput.Direction.y, this.transform.localRotation.z, this.transform.localRotation.w),0.1F);
+    }
+    #endregion
+
+    #region Private Methods
+
+    void EnableControls()
+    {
+        this.isControlEnabled = true;
     }
 
     Vector3 MouseMovement()
@@ -49,4 +75,5 @@ public class FpsController : MonoBehaviour
 
         return Vector3.zero;
     }
+    #endregion
 }
