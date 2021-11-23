@@ -18,7 +18,7 @@ public class FpsController : MonoBehaviour
     public bool IsControlEnabled
     {
         get => this.IsControlEnabled;
-        set => this.isControlEnabled = true;
+        set =>this.isControlEnabled = value;
     }
 
     #endregion
@@ -28,8 +28,8 @@ public class FpsController : MonoBehaviour
     
     void Start()
     {
+        this.IsControlEnabled = false;
         EventManager.OnGameStarted.AddListener(this.EnableControls);
-
     }
 
     // Update is called once per frame
@@ -44,7 +44,6 @@ public class FpsController : MonoBehaviour
           Vector3 dir=  new Vector3((mouseMovement.y) * mouseSensitivity
 
                , (-mouseMovement.x) * mouseSensitivity, 0);
-
 
             transform.localEulerAngles += dir;
         }

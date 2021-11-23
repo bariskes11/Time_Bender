@@ -29,9 +29,8 @@ public class FpsRayCaster : MonoBehaviour
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {
-
             hit.transform.GetComponentInChildren<IInteractable>().Interact();
-            Debug.Log($"Hit Point At {hit.transform.gameObject.name} ");
+            //show slowdown  and fasterButton
         }
         else
         {
