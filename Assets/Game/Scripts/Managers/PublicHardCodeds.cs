@@ -22,7 +22,8 @@ public static class PublicHardCodeds
     }
     public enum TagNames
     { 
-    BreakableObject
+    BreakableObject,
+    DangerObj
     }
     public enum CurrentCamera
     {

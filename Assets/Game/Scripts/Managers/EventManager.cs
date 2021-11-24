@@ -13,4 +13,9 @@ public static class EventManager
     public static UnityEvent OnPlayerStartControl = new UnityEvent();
     public static UnityEvent OnStartCountDown = new UnityEvent();
     public static UnityEvent OnPersonDied = new UnityEvent();
+    public static UnityEvent OnFasterButtonPressed = new UnityEvent();
+    public static UnityEvent OnSlowDownButtonPressed = new UnityEvent();
+
+    public static UnityEvent OnPlayerDecideSpeed = new UnityEvent();
+    public static UnityEvent OnFocused = new UnityEvent();
 }

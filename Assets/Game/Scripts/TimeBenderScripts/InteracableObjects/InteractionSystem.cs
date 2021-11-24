@@ -3,33 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SkinnedMeshRenderer))]
-public class HumanInteracton : MonoBehaviour, IInteractable
+public class InteractionSystem : MonoBehaviour, IInteractable
 {
     #region Unity Fields
     [SerializeField]
     Material interactionMaterial;
+    [SerializeField]
+    GameObject buttonPanel;
     #endregion
     #region Fields
     Material defaultMaterial;
     SkinnedMeshRenderer currentRenderer;
-
     #endregion
-    #region Properties
 
-    private bool isInInteraction;
-    public bool IsInInteraction
-    {
-        get => this.isInInteraction;
-        set => this.isInInteraction = value;    
-    }
-    #endregion
 
 
     #region Unity Methods
-    protected  virtual void Start()
+    protected virtual void Start()
     {
         
         currentRenderer = this.GetComponent<SkinnedMeshRenderer>();
+        buttonPanel.gameObject.SetActive(false);
         defaultMaterial = currentRenderer.material;
 
     }
@@ -39,13 +33,14 @@ public class HumanInteracton : MonoBehaviour, IInteractable
     public void Interact()
     {
         currentRenderer.material = interactionMaterial;
-        isInInteraction = true;
+        buttonPanel.gameObject.SetActive(true);
+
     }
 
     public void NonInteract()
     {
         currentRenderer.material = defaultMaterial;
-        isInInteraction = false;
+        buttonPanel.gameObject.SetActive(false);
     }
     // Start is called before the first frame update
 
