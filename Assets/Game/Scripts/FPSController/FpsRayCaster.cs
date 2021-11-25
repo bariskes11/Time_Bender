@@ -29,7 +29,12 @@ public class FpsRayCaster : MonoBehaviour
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {
-            hit.transform.GetComponentInChildren<IInteractable>().Interact();
+            var rslt = hit.transform.GetComponentInChildren<IInteractable>();
+            if (rslt!=null)
+            {
+                rslt.Interact();
+                rslt.IsAimed = true;
+            }
             //show slowdown  and fasterButton
         }
         else
@@ -39,6 +44,7 @@ public class FpsRayCaster : MonoBehaviour
             foreach (var item in allInteractables)
             {
                 item.NonInteract();
+                item.IsAimed = false;
             }
         }
 

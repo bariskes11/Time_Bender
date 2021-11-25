@@ -14,6 +14,7 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     #region Fields
     Material defaultMaterial;
     SkinnedMeshRenderer currentRenderer;
+    public bool IsAimed { get; set; }
     #endregion
 
 

@@ -36,12 +36,14 @@ public class NPC_MovementController : NPC_Base
    protected override void SetSlowDownSpeed()
     {
         base.SetSlowDownSpeed();
+        if(interaction.IsAimed)
         currentSpeed = normalRunSpeed / sloworFasterSpeedMultiply;
     }
     protected override void SetFasterSpeed()
     {
         base.SetFasterSpeed();
-        currentSpeed = normalRunSpeed * sloworFasterSpeedMultiply;
+        if (interaction.IsAimed)
+            currentSpeed = normalRunSpeed * sloworFasterSpeedMultiply;
 
     }
     protected override void SetStartStatus()

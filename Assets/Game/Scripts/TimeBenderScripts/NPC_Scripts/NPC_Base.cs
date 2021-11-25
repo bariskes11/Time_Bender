@@ -6,31 +6,30 @@ using static PublicHardCodeds;
 public class NPC_Base : MonoBehaviour
 {
     #region Properties
+    protected InteractionSystem interaction; 
     protected bool iscontrolstarted;
     public bool IsControlstarted
     {
         get => this.iscontrolstarted;
         set => this.iscontrolstarted = value;
     }
-    protected bool isAimed;
-    public bool IsAimed
-    {
-        get => this.isAimed;
-        set=>this.isAimed = value;
-    }
+    
 
     protected virtual void Start()
     {
+        interaction = this.GetComponentInChildren<InteractionSystem>();
+        if (!interaction)
+        {
+            Debug.Log("<color=red>Ther is no interaction system</color>");
+        }
+
         EventManager.OnGameStarted.AddListener(this.SetStartStatus);
         EventManager.OnFasterButtonPressed.AddListener(this.SetFasterSpeed);
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowDownSpeed);
-
     }
     protected virtual void Update()
     {
         if (!iscontrolstarted)
-            return;
-        if (!IsAimed)
             return;
     }
     protected virtual void SetStartStatus()
@@ -39,13 +38,10 @@ public class NPC_Base : MonoBehaviour
     }
     protected virtual void SetFasterSpeed()
     {
-        if (!IsAimed)
-            return;
     }
     protected virtual void SetSlowDownSpeed()
     {
-        if (!IsAimed)
-            return;
+     
     }
 
     private void OnTriggerEnter(Collider other)
@@ -55,6 +51,9 @@ public class NPC_Base : MonoBehaviour
             //play some particles
             this.GetComponent<Animator>().enabled = false;
             this.iscontrolstarted = false;
+            Rigidbody rgd = other.gameObject.GetComponent<Rigidbody>();
+            rgd.angularDrag = 0;
+            rgd.drag = 0;
         }
     }
 

@@ -8767,6 +8767,7 @@ GameObject:
   - component: {fileID: 6034331224913819278}
   - component: {fileID: 5458045048541920524}
   - component: {fileID: 5458045048541920523}
+  - component: {fileID: 5458045048541920525}
   m_Layer: 10
   m_Name: BillBoard
   m_TagString: DangerObj
@@ -8841,6 +8842,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 1.531283, z: 0}
     m_Extent: {x: 2.2139494, y: 1.531283, z: 0.8056934}
   m_DirtyAABB: 0
+--- !u!114 &5458045048541920525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458045048541920522}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a68733123c6434cb2f9ef6760241df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fasterMultiplyer: 0.5
+  slowerMultiplyer: 16
 --- !u!4 &5458045048542181464
 Transform:
   m_ObjectHideFlags: 0

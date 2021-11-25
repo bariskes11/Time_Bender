@@ -3,32 +3,37 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class NPC_TimeAnimController : MonoBehaviour
+public class NPC_TimeAnimController : NPC_Base
 {
     #region Fields
     Animator anims;
     #endregion
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         anims = this.GetComponent<Animator>();
         anims.speed = 0;
-        EventManager.OnGameStarted.AddListener(this.StartAnimations);
-        EventManager.OnFasterButtonPressed.AddListener(this.SetFasterAnimation);
-        EventManager.OnSlowDownButtonPressed.AddListener(this.setSlowerAnimation);
+        
     }
 
-    void StartAnimations()
+    protected override void SetStartStatus()
     {
+        base.SetStartStatus();
+        
         anims.speed = 1;
     }
 
-    void SetFasterAnimation()
+    protected override void SetFasterSpeed()
     {
-        anims.speed = .5F;
+        base.SetFasterSpeed();
+        if (interaction.IsAimed)
+            anims.speed = 2F;
     }
-    void setSlowerAnimation()
+    protected override void SetSlowDownSpeed()
     {
-        anims.speed = 2F;
+        base.SetSlowDownSpeed();
+        if (interaction.IsAimed)
+            anims.speed = .5F;
     }
 
 
