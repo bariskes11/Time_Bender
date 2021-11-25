@@ -54,6 +54,7 @@ public class NPC_Base : MonoBehaviour
             Rigidbody rgd = other.gameObject.GetComponent<Rigidbody>();
             rgd.angularDrag = 0;
             rgd.drag = 0;
+            EventManager.OnGameFail.Invoke();
         }
     }
 
