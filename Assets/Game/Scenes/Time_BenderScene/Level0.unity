@@ -7158,12 +7158,14 @@ GameObject:
   - component: {fileID: 1808813834}
   - component: {fileID: 1808813833}
   - component: {fileID: 1808813832}
+  - component: {fileID: 1808813838}
+  - component: {fileID: 1808813837}
   m_Layer: 0
   m_Name: NPCTarget
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!114 &1808813832
 MonoBehaviour:
@@ -7254,6 +7256,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1808813837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808813831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a256ffc336329f4d8eeb3eb34644a5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1808813838
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808813831}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1835456128
 GameObject:
   m_ObjectHideFlags: 0
@@ -8818,8 +8845,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a68733123c6434cb2f9ef6760241df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fasterDragMultiplyer: 0
-  slowerDragMultiplyer: 0
+  fasterDragMultiplyer: 0.2
+  slowerDragMultiplyer: 16
 --- !u!4 &5458045048542181464
 Transform:
   m_ObjectHideFlags: 0
