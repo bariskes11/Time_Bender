@@ -29,9 +29,17 @@ public class StaffChanger : MonoBehaviour
     #endregion
 
     #region Fields
-
     SineDeformer sindeform;
-    bool isChanged;
+    #endregion
+    #region Properties
+    private bool isChanged;
+    public bool IsChanged
+    {
+        get => this.isChanged;
+        set => this.isChanged = value;
+
+    }
+
 
     #endregion
 

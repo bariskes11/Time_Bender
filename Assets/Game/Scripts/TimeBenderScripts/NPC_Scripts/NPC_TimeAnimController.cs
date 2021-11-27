@@ -13,13 +13,13 @@ public class NPC_TimeAnimController : NPC_Base
         base.Start();
         anims = this.GetComponent<Animator>();
         anims.speed = 0;
-        
+
     }
 
     protected override void SetStartStatus()
     {
         base.SetStartStatus();
-        
+
         anims.speed = 1;
     }
 
@@ -34,6 +34,13 @@ public class NPC_TimeAnimController : NPC_Base
         base.SetSlowDownSpeed();
         if (interaction.IsAimed)
             anims.speed = .5F;
+    }
+
+    public void PlayVictoryAnim()
+    {
+        anims.speed = 1;
+        anims.SetBool("Happy", true);
+
     }
 
 

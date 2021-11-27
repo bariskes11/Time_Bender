@@ -22,6 +22,7 @@ public class LevelManager : MonoBehaviour
     }
     public void ReloadCurrentLevel()
     {
+        this.GetComponentInParent<MenuManager>().SetInGamePanel();
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
         LevelIndex = levelIndex;
         SceneManager.LoadScene(LevelIndex);

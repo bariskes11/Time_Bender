@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 5559722817425957480}
   - component: {fileID: 7695786705027995298}
   - component: {fileID: 3612760513995771094}
-  - component: {fileID: 1603398587892651025}
+  - component: {fileID: 8829624017284951797}
   m_Layer: 0
   m_Name: FasterTimeStaff
   m_TagString: Untagged
@@ -228,21 +228,21 @@ MonoBehaviour:
   CurveInfluence: 0
   predictable: 1
   Frequency: 0
-  Phaze: 1981.3121
-  PeakMultiplier: 0.1
+  Phaze: 1500
+  PeakMultiplier: 0.01
   AnimatePhaze: 1
   AnimationSpeed: 0
   IsStatic: 0
   UseEffector: 0
   Effector: {fileID: 0}
---- !u!114 &1603398587892651025
+--- !u!114 &8829624017284951797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8199948038625671031}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccaa7b1a0be4d164a8652629395593b2, type: 3}
   m_Name: 
@@ -258,6 +258,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8829238793845468621}
     m_Modifications:
+    - target: {fileID: 5835288126931960072, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835288126931960072, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835288126931960072, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.16730118
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835288126931960072, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].value
+      value: 0.17110252
+      objectReference: {fileID: 0}
     - target: {fileID: 5861049225647000594, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
       propertyPath: m_Name
       value: FasterLaserBeam
@@ -268,15 +284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5863649974707355684, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5863649974707355684, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5863649974707355684, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5863649974707355684, guid: 1ba65d88324b838478a84684fa232c79, type: 3}
       propertyPath: m_LocalPosition.x

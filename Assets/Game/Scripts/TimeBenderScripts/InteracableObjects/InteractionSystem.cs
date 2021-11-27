@@ -41,6 +41,7 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     public void NonInteract()
     {
         currentRenderer.material = defaultMaterial;
+        if(buttonPanel!=null)
         buttonPanel.gameObject.SetActive(false);
     }
     // Start is called before the first frame update

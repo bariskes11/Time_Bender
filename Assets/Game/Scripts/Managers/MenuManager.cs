@@ -29,7 +29,7 @@ public class MenuManager : SingletonCreator<MenuManager>
     GameObject TaptoPlayPanel;
    
 
-    private void Start()
+    private void Awake()
     {
         DOTween.Init();
         DOTween.SetTweensCapacity(500, 500);
@@ -37,7 +37,6 @@ public class MenuManager : SingletonCreator<MenuManager>
         Application.targetFrameRate = 60;
         EventManager.OnGameSuccess.AddListener(this.SetWinPanel);
         EventManager.OnGameFail.AddListener(this.SetLosePanel);
-
         SetTapToPlayPanel();
     }
     void DisableAllPanels()
@@ -62,6 +61,7 @@ public class MenuManager : SingletonCreator<MenuManager>
         currentGameStat = GameStats.InGame;
         DisableAllPanels();
         InGamePanel.SetActive(true);
+
         
     }
 
@@ -94,7 +94,7 @@ public class MenuManager : SingletonCreator<MenuManager>
 
     IEnumerator waitTimeOut()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         LosePanel.SetActive(true);
 
     }

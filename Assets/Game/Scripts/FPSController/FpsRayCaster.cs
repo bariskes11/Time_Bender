@@ -18,7 +18,8 @@ public class FpsRayCaster : MonoBehaviour
     GameObject cachedSlowLine;
     GameObject cachedFastLine;
     GameObject currentLine;
-
+    GameObject lastInteractionPoint;
+    bool isClicked;
 
     #endregion
     #region Properties
@@ -29,6 +30,7 @@ public class FpsRayCaster : MonoBehaviour
         set => this.isFocused = value;
     }
 
+
     #endregion
 
 
@@ -38,20 +40,30 @@ public class FpsRayCaster : MonoBehaviour
     {
         mainCam = Camera.main;
         allInteractables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>().ToArray();
-        
+        EventManager.OnFasterButtonPressed.AddListener(this.StartFollowingLastPoint);
+        EventManager.OnSlowDownButtonPressed.AddListener(this.StartFollowingLastPoint);
+        EventManager.OnGameSuccess.AddListener(this.DisableRaycast);
+        this.isClicked = false;
+
+
 
     }
+    
 
     private void Update()
     {
+        if (isClicked)
+        {
+            this.transform.LookAt(this.lastInteractionPoint.transform);
+            return;
+        }
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {
             var rslt = hit.transform.GetComponentInChildren<IInteractable>();
             if (rslt != null)
             {
-
-
+                this.lastInteractionPoint = hit.transform.gameObject;
                 rslt.Interact();
                 rslt.IsAimed = true;
                 this.IsFocused = true;
@@ -80,5 +92,19 @@ public class FpsRayCaster : MonoBehaviour
     #endregion
 
     #region Private Methods
+    void StartFollowingLastPoint()
+    {
+        this.isClicked = true;
+    }
+    void DisableRaycast()
+    {
+
+        foreach (var item in allInteractables)
+        {
+            item.NonInteract();
+            item.IsAimed = false;
+            this.IsFocused = false;
+        }
+    }
     #endregion
 }
