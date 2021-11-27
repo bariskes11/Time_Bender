@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 754298864593711420}
   - component: {fileID: 754298864593711421}
   - component: {fileID: 754298864593711422}
+  - component: {fileID: -7388096738045327640}
   m_Layer: 0
   m_Name: SlowTimeStaff
   m_TagString: Untagged
@@ -234,6 +235,22 @@ MonoBehaviour:
   IsStatic: 0
   UseEffector: 0
   Effector: {fileID: 0}
+--- !u!114 &-7388096738045327640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754298864593711418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccaa7b1a0be4d164a8652629395593b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laserObj: {fileID: 878678299581644645}
+  sinDeformer: {fileID: 754298864593711422}
+  frequency: 60
+  animationSpeed: 10
 --- !u!1001 &2078772291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -319,6 +336,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a05464755e8dd6d468adf29d434a2116, type: 3}
+--- !u!1 &878678299581644645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 878678301312283430, guid: a05464755e8dd6d468adf29d434a2116, type: 3}
+  m_PrefabInstance: {fileID: 2078772291}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &881523944021497981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 881523943670846526, guid: a05464755e8dd6d468adf29d434a2116, type: 3}
