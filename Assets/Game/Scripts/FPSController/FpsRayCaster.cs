@@ -9,6 +9,8 @@ public class FpsRayCaster : MonoBehaviour
     #region Unity Fields
     [SerializeField]
     LayerMask raycastLayers;
+    [SerializeField]
+    GameObject hiPointObject;
     #endregion
     #region Fields
     Camera mainCam;
@@ -19,7 +21,8 @@ public class FpsRayCaster : MonoBehaviour
     GameObject cachedFastLine;
     GameObject currentLine;
     GameObject lastInteractionPoint;
-    bool isClicked;
+    
+    GameObject currenthitPointObject;
 
     #endregion
     #region Properties
@@ -29,7 +32,12 @@ public class FpsRayCaster : MonoBehaviour
         get => this.isFocused;
         set => this.isFocused = value;
     }
-
+    private bool isClicked;
+    public bool IsClicked
+    {
+        get => this.isClicked;
+        set => this.isClicked = value;
+    }
 
     #endregion
 
@@ -38,6 +46,7 @@ public class FpsRayCaster : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
+        currenthitPointObject = Instantiate( this.hiPointObject);
         mainCam = Camera.main;
         allInteractables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>().ToArray();
         EventManager.OnFasterButtonPressed.AddListener(this.StartFollowingLastPoint);
@@ -63,7 +72,10 @@ public class FpsRayCaster : MonoBehaviour
             var rslt = hit.transform.GetComponentInChildren<IInteractable>();
             if (rslt != null)
             {
-                this.lastInteractionPoint = hit.transform.gameObject;
+                
+                currenthitPointObject.transform.SetParent(hit.transform);
+                currenthitPointObject.transform.position = hit.point;
+                this.lastInteractionPoint = currenthitPointObject;
                 rslt.Interact();
                 rslt.IsAimed = true;
                 this.IsFocused = true;

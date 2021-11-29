@@ -13,17 +13,11 @@ public class ObjectInteraction : InteractionSystem
     {
         
         base.Start();
-        rigidbdy = this.GetComponent<Rigidbody>();
-        EventManager.OnGameStarted.AddListener(this.SetRigidBody);
     }
     #endregion
 
     #region Private Methods
-    void SetRigidBody()
-    {
-        Debug.Log("SetRigidBody Fired");
-        rigidbdy.constraints = RigidbodyConstraints.None;
-    }
+    
     #endregion
 
 }

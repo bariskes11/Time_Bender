@@ -10,16 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4624727143599637912}
   - component: {fileID: 4624727143600390518}
-  - component: {fileID: 4624727143601799422}
   - component: {fileID: 488418611}
-  - component: {fileID: 488418603}
-  - component: {fileID: 488418604}
-  - component: {fileID: 488418605}
-  - component: {fileID: 488418606}
   - component: {fileID: 3967814440909932368}
-  m_Layer: 0
+  - component: {fileID: 164348115}
+  - component: {fileID: 164348113}
+  - component: {fileID: 164348114}
+  m_Layer: 10
   m_Name: Car
-  m_TagString: Untagged
+  m_TagString: DangerObj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4624727143599327958}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 13.95, y: 0, z: -3.35}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4624727143599654176}
   - {fileID: 4624727143599635258}
@@ -53,8 +51,38 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4624727143599327958}
   m_Mesh: {fileID: 4300000, guid: 823ed423ae6ba0d4589ddb8fe51e7f14, type: 3}
---- !u!23 &4624727143601799422
-MeshRenderer:
+--- !u!54 &488418611
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624727143599327958}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &3967814440909932368
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624727143599327958}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: 823ed423ae6ba0d4589ddb8fe51e7f14, type: 3}
+--- !u!137 &164348115
+SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -68,7 +96,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
+  m_RayTracingMode: 3
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
@@ -94,90 +122,48 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!54 &488418611
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
   serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &488418603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e5cacb76cba02543ac5277e19a4100d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sliceId: 0
-  _lastSliceTime: -3.4028235e+38
-  _defaultSliceMaterial: {fileID: 2100000, guid: 9b42e832ae539cc43aff953e96e71645, type: 2}
-  _asynchronously: 1
-  _delayBetweenSlices: 0.01
---- !u!114 &488418604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18360257b5b118644b7c144e3c800b49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &488418605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3831578e3316d041b73e0e29a8c2dc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &488418606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb4231669f3526949a4b889196486fbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!64 &3967814440909932368
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4624727143599327958}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300000, guid: 823ed423ae6ba0d4589ddb8fe51e7f14, type: 3}
+  m_Bones: []
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 0}
+  m_AABB:
+    m_Center: {x: 0.000000059604645, y: 0.8365443, z: 0.13018548}
+    m_Extent: {x: 1.214992, y: 0.6570424, z: 2.8212905}
+  m_DirtyAABB: 0
+--- !u!114 &164348113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624727143599327958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84a68733123c6434cb2f9ef6760241df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalSpeed: 1.5
+  fastSpeed: 8
+  slowSpeed: 0.02
+  direction: {x: 1, y: 0, z: 0}
+--- !u!114 &164348114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4624727143599327958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f183c1a547ad8740bbddc73c94fee9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionMaterial: {fileID: 2100000, guid: edcd35370e83bcc4682b85dd77f17f6f, type: 2}
+  buttonPanel: {fileID: 0}
 --- !u!1 &4624727143599338022
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +175,7 @@ GameObject:
   - component: {fileID: 4624727143599654176}
   - component: {fileID: 4624727143600396304}
   - component: {fileID: 4624727143601493954}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Glass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,7 +257,7 @@ GameObject:
   - component: {fileID: 4624727143599645662}
   - component: {fileID: 4624727143600422414}
   - component: {fileID: 4624727143601489084}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_SteeringW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +339,7 @@ GameObject:
   - component: {fileID: 4624727143599635258}
   - component: {fileID: 4624727143600373240}
   - component: {fileID: 4624727143601509070}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Plates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +422,7 @@ GameObject:
   - component: {fileID: 4624727143600467452}
   - component: {fileID: 4624727143601496032}
   - component: {fileID: 245429799}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Wheel_fl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -532,7 +518,7 @@ GameObject:
   - component: {fileID: 4624727143600419042}
   - component: {fileID: 4624727143601511478}
   - component: {fileID: 1789363403}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Wheel_rl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +614,7 @@ GameObject:
   - component: {fileID: 4624727143600487264}
   - component: {fileID: 4624727143601525692}
   - component: {fileID: 1126959392}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Wheel_rr
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -724,7 +710,7 @@ GameObject:
   - component: {fileID: 4624727143600412434}
   - component: {fileID: 4624727143601481602}
   - component: {fileID: 443399678}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Veh_Car_Muscle_Wheel_fr
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -14,7 +14,7 @@ public class NPC_MovementController : NPC_Base
     Transform targetPosition;
 
     #region Fields
-    
+
     bool isStarted;
 
     #endregion
@@ -32,12 +32,14 @@ public class NPC_MovementController : NPC_Base
         currentSpeed = normalRunSpeed;
         EventManager.OnFasterButtonPressed.AddListener(this.SetFasterSpeed);
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowDownSpeed);
+        EventManager.OnGameFail.AddListener(this.DisableControls);
+        EventManager.OnGameSuccess.AddListener(this.LookAtCamera);
     }
-   protected override void SetSlowDownSpeed()
+    protected override void SetSlowDownSpeed()
     {
         base.SetSlowDownSpeed();
-        if(interaction.IsAimed)
-        currentSpeed = normalRunSpeed / sloworFasterSpeedMultiply;
+        if (interaction.IsAimed)
+            currentSpeed = normalRunSpeed / sloworFasterSpeedMultiply;
     }
     protected override void SetFasterSpeed()
     {
@@ -57,5 +59,16 @@ public class NPC_MovementController : NPC_Base
         if (!this.iscontrolstarted)
             return;
         this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition.position, currentSpeed * Time.deltaTime);
+        this.transform.LookAt(targetPosition.position);
     }
+    void DisableControls()
+    {
+        this.iscontrolstarted = false;
+    }
+    void LookAtCamera()
+    {
+        this.iscontrolstarted = false;
+        this.transform.LookAt(Camera.main.transform.position);
+    }
+
 }

@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using static PublicHardCodeds;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MenuManager : SingletonCreator<MenuManager>
 {
@@ -15,6 +17,8 @@ public class MenuManager : SingletonCreator<MenuManager>
     [Header("InGame Score")]
     [SerializeField]
     TextMeshProUGUI scoreTxt;
+    [SerializeField]
+    Text txtLvlIndex;
     [Space(3)]
 
     [SerializeField]
@@ -31,12 +35,14 @@ public class MenuManager : SingletonCreator<MenuManager>
 
     private void Awake()
     {
+        instance = this;
         DOTween.Init();
         DOTween.SetTweensCapacity(500, 500);
         currentGameStat = GameStats.TapToPlay;
         Application.targetFrameRate = 60;
         EventManager.OnGameSuccess.AddListener(this.SetWinPanel);
         EventManager.OnGameFail.AddListener(this.SetLosePanel);
+        txtLvlIndex.text = $"Level { SceneManager.GetActiveScene().buildIndex}";
         SetTapToPlayPanel();
     }
     void DisableAllPanels()

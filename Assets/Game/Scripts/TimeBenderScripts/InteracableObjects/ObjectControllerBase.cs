@@ -7,9 +7,13 @@ public class ObjectControllerBase : NPC_Base
 {
     #region Unity Fields
     [SerializeField]
-    float fasterDragMultiplyer;
+    float normalSpeed;
     [SerializeField]
-    float slowerDragMultiplyer;
+    float fastSpeed;
+    [SerializeField]
+    float slowSpeed;
+    [SerializeField]
+    Vector3 direction;
     #endregion
     #region Fields
     Rigidbody rgdbdy;
@@ -22,19 +26,28 @@ public class ObjectControllerBase : NPC_Base
     {
         base.Start();
         rgdbdy = this.GetComponent<Rigidbody>();
-        currentFalDownSpeed = rgdbdy.drag;
+        currentFalDownSpeed = normalSpeed;
+        rgdbdy.constraints = RigidbodyConstraints.FreezeAll;
     }
     protected override void Update()
     {
-        base.Update();
-        if (this.interaction.IsAimed)
-        {
-            rgdbdy.drag = currentFalDownSpeed;
-        }
+        //base.Update();
+        if (!iscontrolstarted)
+             return;
+        
+       // if (this.interaction.IsAimed)
+       // {
+        rgdbdy.velocity = direction * currentFalDownSpeed;
+
+      //  }
 
     }
     #endregion
-
+    protected override void SetStartStatus()
+    {
+        base.SetStartStatus();
+        rgdbdy.constraints = RigidbodyConstraints.None;
+    }
 
     protected override void SetSlowDownSpeed()
     {
@@ -42,7 +55,7 @@ public class ObjectControllerBase : NPC_Base
         base.SetSlowDownSpeed();
         if (this.interaction.IsAimed)
         {
-            currentFalDownSpeed = slowerDragMultiplyer;
+            currentFalDownSpeed = slowSpeed;
         }
 
     }
@@ -51,8 +64,15 @@ public class ObjectControllerBase : NPC_Base
         base.SetFasterSpeed();
         if (this.interaction.IsAimed)
         {
-            currentFalDownSpeed = fasterDragMultiplyer;
+            currentFalDownSpeed = fastSpeed;
         }
+    }
+
+    public void StopMovement()
+    {
+        rgdbdy.velocity = Vector3.zero;
+        rgdbdy.angularVelocity = Vector3.zero;
+        rgdbdy.constraints = RigidbodyConstraints.FreezeAll;
     }
 
 

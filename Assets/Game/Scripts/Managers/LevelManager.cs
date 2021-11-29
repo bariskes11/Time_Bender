@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     public int LevelIndex = 1;
+    
     public void LoadNextLevel()
     {
         this.LevelIndex += 1;

@@ -22,10 +22,12 @@ public class NPC_Base : MonoBehaviour
         {
             Debug.Log("<color=red>Ther is no interaction system</color>");
         }
-
+        
         EventManager.OnGameStarted.AddListener(this.SetStartStatus);
         EventManager.OnFasterButtonPressed.AddListener(this.SetFasterSpeed);
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowDownSpeed);
+        EventManager.OnGameFail.AddListener(this.DisableControls);
+        EventManager.OnGameSuccess.AddListener(this.DisableControls);
     }
     protected virtual void Update()
     {
@@ -43,6 +45,12 @@ public class NPC_Base : MonoBehaviour
     {
      
     }
+    private  void DisableControls()
+    {
+        this.iscontrolstarted = false;
+        this.gameObject.layer = LayerMask.NameToLayer("Default");
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
