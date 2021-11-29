@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
-    public int LevelIndex = 1;
+    
     
     public void LoadNextLevel()
     {
-        this.LevelIndex += 1;
-        SceneManager.LoadScene(this.LevelIndex);
+       int curIndex=  SceneManager.GetActiveScene().buildIndex+1;
+        curIndex= curIndex++;
+        if (SceneManager.sceneCountInBuildSettings <= curIndex)
+        {
+            curIndex = 0;
+        }
+        SceneManager.LoadScene(curIndex);
         MenuManager.instance.SetTapToPlayPanel();
     }
     public void Start()
@@ -25,8 +30,7 @@ public class LevelManager : MonoBehaviour
     {
         this.GetComponentInParent<MenuManager>().SetInGamePanel();
         int levelIndex = SceneManager.GetActiveScene().buildIndex;
-        LevelIndex = levelIndex;
-        SceneManager.LoadScene(LevelIndex);
+        SceneManager.LoadScene(levelIndex);
         MenuManager.instance.SetTapToPlayPanel();
     }
 }
