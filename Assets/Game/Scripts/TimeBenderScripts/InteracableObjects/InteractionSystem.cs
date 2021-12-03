@@ -26,6 +26,7 @@ public class InteractionSystem : MonoBehaviour, IInteractable
         currentRenderer = this.GetComponent<SkinnedMeshRenderer>();
         buttonPanel.gameObject.SetActive(false);
         defaultMaterial = currentRenderer.material;
+        this.IsAimed = false;
 
     }
     #endregion
@@ -33,8 +34,11 @@ public class InteractionSystem : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (this.IsAimed)
+            return;
         currentRenderer.material = interactionMaterial;
         buttonPanel.gameObject.SetActive(true);
+        this.IsAimed = true;
 
     }
 

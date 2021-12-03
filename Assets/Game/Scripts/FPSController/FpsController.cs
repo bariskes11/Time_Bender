@@ -20,12 +20,18 @@ public class FpsController : MonoBehaviour
         get => this.IsControlEnabled;
         set =>this.isControlEnabled = value;
     }
+    private bool isMoving;
+    public bool IsMoving
+    {
+        get => this.isMoving;
+        set => this.isMoving = value;
+    }
 
     #endregion
 
     #region Unity Methods
 
-    
+
     void Start()
     {
         this.IsControlEnabled = false;
@@ -41,14 +47,21 @@ public class FpsController : MonoBehaviour
         Vector2 mouseMovement = MouseMovement();
         if (mouseMovement != Vector2.zero)
         {
-          Vector3 dir=  new Vector3((mouseMovement.y) * mouseSensitivity
+            Vector3 dir = new Vector3((mouseMovement.y) * mouseSensitivity
 
-               , (-mouseMovement.x) * mouseSensitivity, 0);
+                 , (-mouseMovement.x) * mouseSensitivity, 0);
 
             transform.localEulerAngles += dir;
+            this.isMoving = true;
         }
-        //transform.localRotation=  Quaternion.Slerp(this.transform.localRotation, new Quaternion( joystickInput.Direction.x, 
-        //    joystickInput.Direction.y, this.transform.localRotation.z, this.transform.localRotation.w),0.1F);
+        else
+        {
+            this.isMoving = false;
+        }
+
+
+
+        
     }
     #endregion
 

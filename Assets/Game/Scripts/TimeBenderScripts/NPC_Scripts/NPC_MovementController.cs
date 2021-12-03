@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PublicHardCodeds;
 
 public class NPC_MovementController : NPC_Base
 {
@@ -12,11 +13,18 @@ public class NPC_MovementController : NPC_Base
     float sloworFasterSpeedMultiply;
     [SerializeField]
     Transform targetPosition;
+    [SerializeField]
+    GameObject chrushParticle;
 
     #region Fields
+    
 
     bool isStarted;
 
+    #endregion
+    #region Properties
+
+    GameObject cachedchrusParticle;
     #endregion
     #region Properties
     private float currentSpeed;
@@ -34,6 +42,7 @@ public class NPC_MovementController : NPC_Base
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowDownSpeed);
         EventManager.OnGameFail.AddListener(this.DisableControls);
         EventManager.OnGameSuccess.AddListener(this.LookAtCamera);
+        cachedchrusParticle = Instantiate(chrushParticle);
     }
     protected override void SetSlowDownSpeed()
     {
@@ -60,6 +69,16 @@ public class NPC_MovementController : NPC_Base
             return;
         this.transform.position = Vector3.MoveTowards(this.transform.position, targetPosition.position, currentSpeed * Time.deltaTime);
         this.transform.LookAt(targetPosition.position);
+    }
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        if (other.gameObject.CompareTag(TagNames.DangerObj.ToString()))
+        {
+            Vector3 hitPoint = other.gameObject.GetComponent<Collider>().ClosestPoint(transform.position);
+            cachedchrusParticle.transform.position = hitPoint;
+            cachedchrusParticle.GetComponent<ParticleSystem>().Play();
+        }
     }
     void DisableControls()
     {

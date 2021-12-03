@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(FpsController))]
 public class FpsRayCaster : MonoBehaviour
 {
 
@@ -17,12 +18,13 @@ public class FpsRayCaster : MonoBehaviour
     Ray ray;
     RaycastHit hit;
     IInteractable[] allInteractables;
-    GameObject cachedSlowLine;
-    GameObject cachedFastLine;
+    //GameObject cachedSlowLine;
+    //GameObject cachedFastLine;
     GameObject currentLine;
     GameObject lastInteractionPoint;
     
     GameObject currenthitPointObject;
+    FpsController fpsController;
 
     #endregion
     #region Properties
@@ -49,10 +51,11 @@ public class FpsRayCaster : MonoBehaviour
         currenthitPointObject = Instantiate( this.hiPointObject);
         mainCam = Camera.main;
         allInteractables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>().ToArray();
+        fpsController = this.GetComponent<FpsController>();
         EventManager.OnFasterButtonPressed.AddListener(this.StartFollowingLastPoint);
         EventManager.OnSlowDownButtonPressed.AddListener(this.StartFollowingLastPoint);
         EventManager.OnGameSuccess.AddListener(this.DisableRaycast);
-        this.isClicked = false;
+        
 
 
 
@@ -61,10 +64,9 @@ public class FpsRayCaster : MonoBehaviour
 
     private void Update()
     {
-        if (isClicked)
+        if (!fpsController.IsMoving)
         {
             this.transform.LookAt(this.lastInteractionPoint.transform);
-            return;
         }
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
