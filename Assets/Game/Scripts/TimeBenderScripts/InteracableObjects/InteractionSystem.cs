@@ -15,11 +15,13 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     [SerializeField]
     Material slowerMaterial;
 
-    [SerializeField]
-    GameObject buttonPanel;
+
+
     #endregion
     #region Fields
+    GameObject buttonPanel;
     Material defaultMaterial;
+    bool canInteract;
     SkinnedMeshRenderer currentRenderer;
     bool isSpeedChanged = false; // is object's speed changed
     public bool IsAimed { get; set; }
@@ -35,7 +37,7 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     #region Unity Methods
     protected virtual void Start()
     {
-        
+        this.canInteract = true;   
         currentRenderer = this.GetComponent<SkinnedMeshRenderer>();
         
         EventManager.OnGameStarted.AddListener(this.SetButtonPanel);
@@ -50,21 +52,30 @@ public class InteractionSystem : MonoBehaviour, IInteractable
 
     public void Interact(CurrentMode mod)
     {
+        if (!this.canInteract) return;
         this.CurrentMode = mod;
         this.IsAimed = true;
         setMaterialBasedOnMode(mod);
+        if (buttonPanel == null) return;
         buttonPanel.gameObject.SetActive(true);
         
     }
 
     public void NonInteract()
     {
+        if (!this.canInteract) return;
         this.IsAimed = false;
         if (isSpeedChanged)
             return;
         currentRenderer.material = defaultMaterial;
         if(buttonPanel!=null)
         buttonPanel.gameObject.SetActive(false);
+    }
+
+    public void RemoveInteract()
+    {
+        currentRenderer.material = defaultMaterial;
+        this.canInteract = false;
     }
     // Start is called before the first frame update
     #region Private Methods

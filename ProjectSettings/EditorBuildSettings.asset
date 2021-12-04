@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Game/Scenes/Time_BenderScene/Level1.unity
     guid: f7ec37671b01dff4a8175d6d30fdfd87
   - enabled: 1
-    path: Assets/Game/Scenes/Time_BenderScene/Level2.unity
+    path: Assets/Game/Scenes/Time_BenderScene/Level2_ex.unity
     guid: 925da36eb2d3fde4a95fdc43c759a431
   - enabled: 1
-    path: Assets/Game/Scenes/Time_BenderScene/Level3.unity
+    path: Assets/Game/Scenes/Time_BenderScene/Level3_ex.unity
     guid: fe5292fcbe0b5754ab8d450f0e2bc1ac
   m_configObjects: {}

@@ -8,4 +8,6 @@ public interface IInteractable
     public bool IsAimed { get; set; }
     void Interact(CurrentMode mode);
     void NonInteract();
+
+    void RemoveInteract();
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class ObjectControllerBase : NPC_Base
 {
     #region Unity Fields
+    
     [SerializeField]
     float normalSpeed;
     [SerializeField]
