@@ -63,12 +63,13 @@ public class MenuManager : SingletonCreator<MenuManager>
     }
     public void SetInGamePanel()
     {
-        EventManager.OnGameStarted.Invoke();
+        
         currentGameStat = GameStats.InGame;
         DisableAllPanels();
         InGamePanel.SetActive(true);
+        EventManager.OnGameStarted.Invoke();
 
-        
+
     }
 
     public void SetWinPanel()

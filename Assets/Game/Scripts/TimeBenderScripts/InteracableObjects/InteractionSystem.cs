@@ -4,6 +4,7 @@ using UnityEngine;
 using static PublicEnums;
 
 [RequireComponent(typeof(SkinnedMeshRenderer))]
+
 public class InteractionSystem : MonoBehaviour, IInteractable
 {
     #region Unity Fields
@@ -20,9 +21,13 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     #region Fields
     Material defaultMaterial;
     SkinnedMeshRenderer currentRenderer;
-    bool isSpeedChanged=false; // is object's speed changed
+    bool isSpeedChanged = false; // is object's speed changed
     public bool IsAimed { get; set; }
 
+
+    #endregion
+    #region Properties
+    public CurrentMode CurrentMode {get;private set;}
     #endregion
 
 
@@ -32,7 +37,8 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     {
         
         currentRenderer = this.GetComponent<SkinnedMeshRenderer>();
-        buttonPanel.gameObject.SetActive(false);
+        
+        EventManager.OnGameStarted.AddListener(this.SetButtonPanel);
         defaultMaterial = currentRenderer.material;
         EventManager.OnGameSuccess.AddListener(this.SetDefaultmaterial);
         this.IsAimed = false;
@@ -44,6 +50,7 @@ public class InteractionSystem : MonoBehaviour, IInteractable
 
     public void Interact(CurrentMode mod)
     {
+        this.CurrentMode = mod;
         this.IsAimed = true;
         setMaterialBasedOnMode(mod);
         buttonPanel.gameObject.SetActive(true);
@@ -85,6 +92,13 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     void SetDefaultmaterial()
     {
         currentRenderer.material = defaultMaterial;
+    }
+    void SetButtonPanel()
+    {
+        buttonPanel = FindObjectOfType<ButtonBehaviours>(true).gameObject;
+        if (buttonPanel == null)
+            Debug.Log("<color=red>There is no Button Panel in game !!</color>");
+        buttonPanel.gameObject.SetActive(false); 
     }
 
 

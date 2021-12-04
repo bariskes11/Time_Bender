@@ -68,8 +68,13 @@ public class FpsRayCaster : MonoBehaviour
     private void Update()
     {
         if (!isSystemEnabled) return;
+        if (fpsController.IsMoving)
+        {
+            this.lastInteractionPoint = null;
+        }
         if (!fpsController.IsMoving && this.lastInteractionPoint!=null)
         {
+           
             this.transform.LookAt(this.lastInteractionPoint.transform);
         }
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen

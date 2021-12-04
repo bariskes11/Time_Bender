@@ -55,6 +55,7 @@ public class FpsController : MonoBehaviour
 
             transform.localEulerAngles += dir;
             this.isMoving = true;
+            Debug.Log("Now Character is Moving");
         }
         else
         {
