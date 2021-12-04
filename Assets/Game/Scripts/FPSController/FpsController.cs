@@ -27,7 +27,7 @@ public class FpsController : MonoBehaviour
         get => this.isMoving;
         set => this.isMoving = value;
     }
-
+   
     #endregion
 
     #region Unity Methods
@@ -35,6 +35,7 @@ public class FpsController : MonoBehaviour
 
     void Start()
     {
+        
         this.IsControlEnabled = false;
         EventManager.OnGameStarted.AddListener(this.EnableControls);
         EventManager.OnGameSuccess.AddListener(this.LookAtFinishPart);

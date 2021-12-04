@@ -21,12 +21,20 @@ public class CarChrushSystem : MonoBehaviour
     GameObject cachedChrushParticle;
     #endregion
 
-
+    #region Properties
+    private bool isSaved;
+    public bool IsSaved
+    {
+        get => this.isSaved;
+        set => this.isSaved = value;
+    }
+    #endregion
 
 
     #region Unity Methods
     private void Start()
     {
+        this.isSaved = false;
         cachedChrushParticle = Instantiate(carChrushparticle);
         objRigidBody = this.GetComponent<Rigidbody>();
         objcontroller = this.GetComponent<ObjectControllerBase>();
@@ -47,7 +55,7 @@ public class CarChrushSystem : MonoBehaviour
             // find player camera and rotate toward fail point
             FindObjectOfType<FpsController>().LookAtTargetPoint(cachedChrushParticle.transform.position);
             // stop all cars
-            
+
             EventManager.OnGameFail.Invoke();
 
         }
