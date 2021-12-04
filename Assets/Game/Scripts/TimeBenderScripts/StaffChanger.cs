@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static PublicEnums;
 
 public class StaffChanger : MonoBehaviour
 {
@@ -31,6 +32,12 @@ public class StaffChanger : MonoBehaviour
     #region Fields
     SineDeformer sindeform;
     #endregion
+    #region Events
+
+    
+    #endregion
+
+
     #region Properties
     private bool isChanged;
     public bool IsChanged
@@ -51,6 +58,7 @@ public class StaffChanger : MonoBehaviour
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowMode);
         sindeform = normalModeStaff.GetComponent<SineDeformer>();
         isChanged = false;
+        
     }
 
 
@@ -58,23 +66,25 @@ public class StaffChanger : MonoBehaviour
     #region Private Methods
     private void SetSlowMode()
     {
-        if (isChanged)
-            return;
-        
+        //if (isChanged)
+        //    return;
+
 
         StartCoroutine(SetAnimAndMode(this.slowerModeStaff));
         isChanged = true;
     }
     private void SetFastMode()
     {
-        if (isChanged)
-            return;
+        //if (isChanged)
+        //    return;
         
+
         StartCoroutine(SetAnimAndMode(this.fasterModeStaff));
         isChanged = true;
     }
     IEnumerator SetAnimAndMode(GameObject objectToShow)
     {
+        setAnimation();
         while (sindeform.AnimationSpeed < this.animSpeed
             || sindeform.Frequency < this.freaquencySpeed
             )
@@ -87,11 +97,11 @@ public class StaffChanger : MonoBehaviour
         }
         GameObject g = Instantiate(objectToShow);
         g.transform.SetParent(this.transform);
-        g.transform.position = this.normalModeStaff.transform.position;
-        g.transform.localScale = this.normalModeStaff.transform.localScale;
-        g.transform.rotation = this.normalModeStaff.transform.rotation;
-
-        Destroy(this.normalModeStaff);
+        g.transform.localPosition = Vector3.zero;
+        g.transform.localScale = Vector3.one * .5F;
+        g.transform.localRotation = Quaternion.identity;
+       GameObject objtodestroy=  this.GetComponentInChildren<LaserManager>().gameObject;
+        Destroy(objtodestroy);
         sindeform = g.GetComponent<SineDeformer>();
         sindeform.AnimationSpeed = this.animSpeed;
         sindeform.Frequency = this.freaquencySpeed;
@@ -106,6 +116,11 @@ public class StaffChanger : MonoBehaviour
             if (sindeform.Frequency > 0)
                 sindeform.Frequency -= changevalluePerIteration;
         }
+    }
+
+    void setAnimation()
+        {
+        sindeform.gameObject.GetComponent<Animator>().SetTrigger("Hit");
     }
     #endregion
 

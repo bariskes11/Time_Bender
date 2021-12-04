@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,7 @@ public class FpsController : MonoBehaviour
     {
         this.IsControlEnabled = false;
         EventManager.OnGameStarted.AddListener(this.EnableControls);
+        EventManager.OnGameSuccess.AddListener(this.LookAtFinishPart);
     }
 
     // Update is called once per frame
@@ -71,7 +73,18 @@ public class FpsController : MonoBehaviour
     {
         this.isControlEnabled = true;
     }
+    void LookAtFinishPart()
+    {
+        Debug.Log($"Look At Target Point");
+        this.isControlEnabled = false;
+        // looks at final target point
+        Vector3 finishPos=GameObject.FindObjectOfType<SuccesPoint>().transform.position;
+        Vector3 look = finishPos - this.transform.position;
+        Quaternion lookr = Quaternion.LookRotation(look, Vector3.up);
+        transform.DORotateQuaternion(lookr, .3F);
 
+        
+    }
     Vector3 MouseMovement()
     {
         if (Input.GetMouseButtonDown(0))

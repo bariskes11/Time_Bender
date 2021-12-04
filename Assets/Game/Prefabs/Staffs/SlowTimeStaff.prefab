@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 754298864593711421}
   - component: {fileID: 754298864593711422}
   - component: {fileID: -7388096738045327640}
+  - component: {fileID: 7257363612353946769}
   m_Layer: 0
   m_Name: SlowTimeStaff
   m_TagString: Untagged
@@ -251,6 +252,25 @@ MonoBehaviour:
   sinDeformer: {fileID: 754298864593711422}
   frequency: 60
   animationSpeed: 10
+--- !u!95 &7257363612353946769
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 754298864593711418}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3132e8fc116bc8b4791ea5157b0515fb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2078772291
 PrefabInstance:
   m_ObjectHideFlags: 0

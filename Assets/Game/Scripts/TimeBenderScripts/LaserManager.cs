@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class LaserManager : MonoBehaviour
 {
 	#region Unity Fields
@@ -21,12 +22,14 @@ public class LaserManager : MonoBehaviour
 	#endregion
 	#region Fields
 	FpsRayCaster fpsController;
+	Animator anims;
 	bool isDisabled;
 	#endregion
 
 	#region Unity Methods
 	private void Start()
 	{
+		anims = this.GetComponent<Animator>();
 		sinDeformer = this.GetComponent<SineDeformer>();
 		fpsController = GameObject.FindObjectOfType<FpsRayCaster>();
 		EventManager.OnFasterButtonPressed.AddListener(this.DisableSinMove);

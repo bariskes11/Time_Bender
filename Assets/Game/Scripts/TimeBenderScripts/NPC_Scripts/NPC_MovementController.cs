@@ -11,13 +11,13 @@ public class NPC_MovementController : NPC_Base
     [SerializeField]
     [Header("This value can be *2 or /2")]
     float sloworFasterSpeedMultiply;
-    [SerializeField]
-    Transform targetPosition;
+    
+    
     [SerializeField]
     GameObject chrushParticle;
 
     #region Fields
-    
+    Transform targetPosition;
 
     bool isStarted;
 
@@ -37,6 +37,10 @@ public class NPC_MovementController : NPC_Base
     protected override void Start()
     {
         base.Start();
+        targetPosition = GameObject.FindObjectOfType<SuccesPoint>().transform;
+        if (!targetPosition) {
+            Debug.Log($"<color=red>There is No SuccesPoint in game player won't run!!</color>");
+        }
         currentSpeed = normalRunSpeed;
         EventManager.OnFasterButtonPressed.AddListener(this.SetFasterSpeed);
         EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowDownSpeed);

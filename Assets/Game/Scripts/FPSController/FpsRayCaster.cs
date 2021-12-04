@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static PublicEnums;
 
 [RequireComponent(typeof(FpsController))]
 public class FpsRayCaster : MonoBehaviour
@@ -25,7 +26,8 @@ public class FpsRayCaster : MonoBehaviour
     
     GameObject currenthitPointObject;
     FpsController fpsController;
-
+    CurrentMode currentMode;
+    bool isSystemEnabled;
     #endregion
     #region Properties
     private bool isFocused;
@@ -41,6 +43,7 @@ public class FpsRayCaster : MonoBehaviour
         set => this.isClicked = value;
     }
 
+
     #endregion
 
 
@@ -48,23 +51,24 @@ public class FpsRayCaster : MonoBehaviour
     #region Unity Methods
     private void Start()
     {
+        isSystemEnabled = true;
         currenthitPointObject = Instantiate( this.hiPointObject);
         mainCam = Camera.main;
         allInteractables = FindObjectsOfType<MonoBehaviour>().OfType<IInteractable>().ToArray();
         fpsController = this.GetComponent<FpsController>();
-        EventManager.OnFasterButtonPressed.AddListener(this.StartFollowingLastPoint);
-        EventManager.OnSlowDownButtonPressed.AddListener(this.StartFollowingLastPoint);
+        EventManager.OnFasterButtonPressed.AddListener(this.SetFastMode);
+        EventManager.OnSlowDownButtonPressed.AddListener(this.SetSlowMode);
         EventManager.OnGameSuccess.AddListener(this.DisableRaycast);
-        
-
 
 
     }
+
     
 
     private void Update()
     {
-        if (!fpsController.IsMoving)
+        if (!isSystemEnabled) return;
+        if (!fpsController.IsMoving && this.lastInteractionPoint!=null)
         {
             this.transform.LookAt(this.lastInteractionPoint.transform);
         }
@@ -78,7 +82,8 @@ public class FpsRayCaster : MonoBehaviour
                 currenthitPointObject.transform.SetParent(hit.transform);
                 currenthitPointObject.transform.position = hit.point;
                 this.lastInteractionPoint = currenthitPointObject;
-                rslt.Interact();
+                Debug.Log($"Current Mode {this.currentMode}");
+                rslt.Interact(this.currentMode);
                 rslt.IsAimed = true;
                 this.IsFocused = true;
                 
@@ -92,8 +97,9 @@ public class FpsRayCaster : MonoBehaviour
         }
         else
         {
+            
+            if (allInteractables==null) return;
             // noting hit back to normal
-
             foreach (var item in allInteractables)
             {
                 item.NonInteract();
@@ -103,22 +109,39 @@ public class FpsRayCaster : MonoBehaviour
         }
 
     }
+ 
     #endregion
 
     #region Private Methods
     void StartFollowingLastPoint()
     {
+        
+        
+    }
+    void SetFastMode()
+    {
         this.isClicked = true;
+        this.currentMode = CurrentMode.Faster;
+    }
+    void SetSlowMode()
+    {
+        this.isClicked = true;
+        this.currentMode = CurrentMode.Slower;
     }
     void DisableRaycast()
     {
-
+        isSystemEnabled = false;
         foreach (var item in allInteractables)
         {
             item.NonInteract();
             item.IsAimed = false;
             this.IsFocused = false;
         }
+
     }
     #endregion
+    #region Private Methods
+
+    #endregion
+
 }
