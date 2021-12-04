@@ -24443,6 +24443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66ef7101ca303b048aecd0e4737bd11b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carChrushparticle: {fileID: 6415400105246107214, guid: 93c676c305ccaa94d8f73cb490a491b6, type: 3}
   hitMultiplayer: 100
   randomForce: 2
 --- !u!65 &623254983904213306

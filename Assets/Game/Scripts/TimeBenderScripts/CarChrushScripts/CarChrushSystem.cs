@@ -38,13 +38,17 @@ public class CarChrushSystem : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<IInteractable>() != null) // its an interactable object
         {
-            Debug.Log($"Collided with {collision.gameObject}", collision.gameObject);
             collision.gameObject.GetComponent<IInteractable>().RemoveInteract();
             objcontroller.IsControlstarted = false; // thisable object move
             objRigidBody.AddForce(Vector3.up * hitMultiplayer * Random.Range(1, randomForce));
             objRigidBody.AddTorque(Vector3.up * hitMultiplayer * Random.Range(1, randomForce));
             cachedChrushParticle.transform.position = collision.contacts[0].point;
             cachedChrushParticle.GetComponent<ParticleSystem>().Play();
+            // find player camera and rotate toward fail point
+            FindObjectOfType<FpsController>().LookAtTargetPoint(cachedChrushParticle.transform.position);
+            // stop all cars
+            
+            EventManager.OnGameFail.Invoke();
 
         }
     }

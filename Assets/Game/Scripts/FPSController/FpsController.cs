@@ -66,6 +66,20 @@ public class FpsController : MonoBehaviour
 
         
     }
+
+    public void LookAtTargetPoint(Vector3 pos)
+    {
+        Debug.Log($"Look At Target Point");
+        this.isControlEnabled = false;
+        // looks at final target point
+        
+        Vector3 look = pos - this.transform.position;
+        Quaternion lookr = Quaternion.LookRotation(look, Vector3.up);
+        transform.DORotateQuaternion(lookr, .3F);
+
+
+    }
+
     #endregion
 
     #region Private Methods
@@ -76,16 +90,13 @@ public class FpsController : MonoBehaviour
     }
     void LookAtFinishPart()
     {
-        Debug.Log($"Look At Target Point");
-        this.isControlEnabled = false;
-        // looks at final target point
-        Vector3 finishPos=GameObject.FindObjectOfType<SuccesPoint>().transform.position;
-        Vector3 look = finishPos - this.transform.position;
-        Quaternion lookr = Quaternion.LookRotation(look, Vector3.up);
-        transform.DORotateQuaternion(lookr, .3F);
+        Vector3 finishPos = GameObject.FindObjectOfType<SuccesPoint>().transform.position;
+        LookAtTargetPoint(finishPos);
 
-        
+
     }
+
+
     Vector3 MouseMovement()
     {
         if (Input.GetMouseButtonDown(0))

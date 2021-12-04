@@ -113925,7 +113925,6 @@ GameObject:
   - component: {fileID: 6787357587720538754}
   - component: {fileID: 6787357587719840126}
   - component: {fileID: 6787357587718752890}
-  - component: {fileID: 6904434212447276746}
   m_Layer: 10
   m_Name: SM_Veh_Car_Sedan_Wheel_rr
   m_TagString: Untagged
@@ -113997,19 +113996,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6904434212447276746
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787357587720754814}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3614391
-  m_Center: {x: 0.09000778, y: 0, z: -0.00000008940697}
 --- !u!1 &6787357587720764718
 GameObject:
   m_ObjectHideFlags: 0
@@ -114103,7 +114089,6 @@ GameObject:
   - component: {fileID: 6787357587720592572}
   - component: {fileID: 6787357587719750972}
   - component: {fileID: 6787357587718316648}
-  - component: {fileID: 6904514141958142270}
   m_Layer: 10
   m_Name: SM_Veh_Car_Sedan_Wheel_fr
   m_TagString: Untagged
@@ -114175,19 +114160,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6904514141958142270
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787357587720794548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.3614391
-  m_Center: {x: 0.090007395, y: 0, z: 0.00000014901161}
 --- !u!1 &6787357587720807400
 GameObject:
   m_ObjectHideFlags: 0
@@ -114199,7 +114171,6 @@ GameObject:
   - component: {fileID: 6787357587720593486}
   - component: {fileID: 6787357587719817986}
   - component: {fileID: 6787357587718324190}
-  - component: {fileID: 6904565376540007886}
   m_Layer: 10
   m_Name: SM_Veh_Car_Sedan_Wheel_rl
   m_TagString: Untagged
@@ -114271,19 +114242,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6904565376540007886
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787357587720807400}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.36143905
-  m_Center: {x: -0.09000778, y: 0, z: 0}
 --- !u!1 &6787357587720817792
 GameObject:
   m_ObjectHideFlags: 0
@@ -114459,7 +114417,6 @@ GameObject:
   - component: {fileID: 6787357587720526316}
   - component: {fileID: 6787357587719739380}
   - component: {fileID: 6787357587718322690}
-  - component: {fileID: 6905026411417524020}
   m_Layer: 10
   m_Name: SM_Veh_Car_Sedan_Wheel_fl
   m_TagString: Untagged
@@ -114531,19 +114488,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6905026411417524020
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6787357587720825870}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.36143905
-  m_Center: {x: -0.090007395, y: 0, z: 0}
 --- !u!1 &6787357587720843496
 GameObject:
   m_ObjectHideFlags: 0
@@ -114559,6 +114503,8 @@ GameObject:
   - component: {fileID: 2704784856256448126}
   - component: {fileID: 1567349624315866536}
   - component: {fileID: 3696839544345237915}
+  - component: {fileID: 8044066023427168275}
+  - component: {fileID: 8044066023427168274}
   m_Layer: 10
   m_Name: SedanCar
   m_TagString: DangerObj
@@ -114628,7 +114574,7 @@ MonoBehaviour:
   normalSpeed: 1.5
   fastSpeed: 8
   slowSpeed: 0.02
-  direction: {x: 1, y: 0, z: 0}
+  direction: {x: 0, y: 0, z: -1}
 --- !u!137 &2704784856256448126
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -114711,6 +114657,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fastParticles: {fileID: 3137867723937035987}
   slowParticles: {fileID: 2397819882961325213}
+--- !u!65 &8044066023427168275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787357587720843496}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1721282, y: 1.3089987, z: 5.1654243}
+  m_Center: {x: -0.0000015497208, y: 0.8805966, z: 0.11457074}
+--- !u!114 &8044066023427168274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6787357587720843496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66ef7101ca303b048aecd0e4737bd11b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carChrushparticle: {fileID: 6415400105246107214, guid: 93c676c305ccaa94d8f73cb490a491b6, type: 3}
+  hitMultiplayer: 100
+  randomForce: 0
 --- !u!1 &6967217513295183815
 GameObject:
   m_ObjectHideFlags: 0
