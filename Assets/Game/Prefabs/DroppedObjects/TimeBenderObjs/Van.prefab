@@ -128197,11 +128197,11 @@ GameObject:
   - component: {fileID: 8196893931561449876}
   - component: {fileID: 6404180021485868109}
   - component: {fileID: 4019627124318486903}
-  - component: {fileID: 4827959666590178413}
   - component: {fileID: 5049145799498155542}
   - component: {fileID: 2855894414442363515}
   - component: {fileID: 3257892045809354678}
   - component: {fileID: 3257892045809354677}
+  - component: {fileID: 7768441948841385731}
   m_Layer: 10
   m_Name: Van
   m_TagString: DangerObj
@@ -128273,59 +128273,6 @@ MonoBehaviour:
   fastSpeed: 8
   slowSpeed: 0.02
   direction: {x: 1, y: 0, z: 0}
---- !u!137 &4827959666590178413
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196893931564510792}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 3
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 62e25ef75a2216f418d06453c9ad15cb, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 97982d8a36ff16f4a88f291ef2443e49, type: 3}
-  m_Bones: []
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 0}
-  m_AABB:
-    m_Center: {x: -0.000000059604645, y: 1.1358304, z: 0.08672106}
-    m_Extent: {x: 1.2363048, y: 0.8915768, z: 2.509674}
-  m_DirtyAABB: 0
 --- !u!114 &5049145799498155542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128338,9 +128285,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f183c1a547ad8740bbddc73c94fee9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionMaterial: {fileID: 2100000, guid: 8a62797c9468408429bcd26f826c07d6, type: 2}
-  fasterMaterial: {fileID: 2100000, guid: 18049b27e9561e44c9e90b1e2de886d9, type: 2}
-  slowerMaterial: {fileID: 2100000, guid: 074b8aabc488b1d4e9383a4294c4f3af, type: 2}
+  interactionMaterial: {fileID: 2100000, guid: a192b41661c597b47a48af006f713366, type: 2}
+  fasterMaterial: {fileID: 2100000, guid: 18f0527860464e94a966efa20a2420b1, type: 2}
+  slowerMaterial: {fileID: 2100000, guid: ebd3fe6a0bda3f042b68c0b01635b7ab, type: 2}
 --- !u!114 &2855894414442363515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128383,6 +128330,48 @@ MonoBehaviour:
   carChrushparticle: {fileID: 6415400105246107214, guid: 93c676c305ccaa94d8f73cb490a491b6, type: 3}
   hitMultiplayer: 100
   randomForce: 0
+--- !u!23 &7768441948841385731
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8196893931564510792}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ae4870cba172f524491e4431ce936a9d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &8196893931564516476
 GameObject:
   m_ObjectHideFlags: 0

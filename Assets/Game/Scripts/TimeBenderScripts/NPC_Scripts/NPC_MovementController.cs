@@ -7,6 +7,8 @@ using static PublicHardCodeds;
 public class NPC_MovementController : NPC_Base
 {
     [SerializeField]
+    bool changeRotationOnFinish = true;
+    [SerializeField]
     float normalRunSpeed;
     [SerializeField]
     [Header("This value can be *2 or /2")]
@@ -92,6 +94,8 @@ public class NPC_MovementController : NPC_Base
     void LookAtCamera()
     {
         this.iscontrolstarted = false;
+        if (!changeRotationOnFinish)
+            return;
         this.transform.LookAt(Camera.main.transform.position);
     }
 

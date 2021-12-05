@@ -108,8 +108,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f183c1a547ad8740bbddc73c94fee9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionMaterial: {fileID: 2100000, guid: c11b10aff71d89e46b646f30df780c9f, type: 2}
-  buttonPanel: {fileID: 0}
+  interactionMaterial: {fileID: 2100000, guid: a192b41661c597b47a48af006f713366, type: 2}
+  fasterMaterial: {fileID: 2100000, guid: 18f0527860464e94a966efa20a2420b1, type: 2}
+  slowerMaterial: {fileID: 2100000, guid: ebd3fe6a0bda3f042b68c0b01635b7ab, type: 2}
 --- !u!54 &7507741897108240578
 Rigidbody:
   m_ObjectHideFlags: 0

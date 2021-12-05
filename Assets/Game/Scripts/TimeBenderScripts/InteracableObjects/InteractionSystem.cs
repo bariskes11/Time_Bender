@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static PublicEnums;
 
-[RequireComponent(typeof(SkinnedMeshRenderer))]
+
 
 public class InteractionSystem : MonoBehaviour, IInteractable
 {
@@ -22,7 +22,8 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     GameObject buttonPanel;
     Material defaultMaterial;
     bool canInteract;
-    SkinnedMeshRenderer currentRenderer;
+    MeshRenderer currentRenderer;
+    SkinnedMeshRenderer skinnedMeshRenderer;
     bool isSpeedChanged = false; // is object's speed changed
     public bool IsAimed { get; set; }
 
@@ -38,10 +39,21 @@ public class InteractionSystem : MonoBehaviour, IInteractable
     protected virtual void Start()
     {
         this.canInteract = true;   
-        currentRenderer = this.GetComponent<SkinnedMeshRenderer>();
+        currentRenderer = this.GetComponent<MeshRenderer>();
+
+
         
         EventManager.OnGameStarted.AddListener(this.SetButtonPanel);
-        defaultMaterial = currentRenderer.material;
+        if (currentRenderer != null)
+        {
+            defaultMaterial = currentRenderer.material;
+        }
+        else
+        {
+            skinnedMeshRenderer = this.GetComponent<SkinnedMeshRenderer>();
+            defaultMaterial = skinnedMeshRenderer.material;
+
+        }
         EventManager.OnGameSuccess.AddListener(this.SetDefaultmaterial);
         this.IsAimed = false;
 
@@ -67,14 +79,16 @@ public class InteractionSystem : MonoBehaviour, IInteractable
         this.IsAimed = false;
         if (isSpeedChanged)
             return;
-        currentRenderer.material = defaultMaterial;
+
+        ChangeMaterial(defaultMaterial);
         if(buttonPanel!=null)
         buttonPanel.gameObject.SetActive(false);
     }
 
     public void RemoveInteract()
     {
-        currentRenderer.material = defaultMaterial;
+
+        ChangeMaterial(defaultMaterial);
         this.canInteract = false;
     }
     // Start is called before the first frame update
@@ -84,14 +98,15 @@ public class InteractionSystem : MonoBehaviour, IInteractable
         switch (mode)
         {
             case CurrentMode.Normal:
-                currentRenderer.material = interactionMaterial;
+                ChangeMaterial(interactionMaterial);
+                
                 break;
             case CurrentMode.Faster:
-                currentRenderer.material = fasterMaterial;
+                ChangeMaterial(fasterMaterial);
                 this.isSpeedChanged = true;
                 break;
             case CurrentMode.Slower:
-                currentRenderer.material = slowerMaterial;
+                ChangeMaterial(slowerMaterial);
                 this.isSpeedChanged = true;
                 break;
             
@@ -99,10 +114,17 @@ public class InteractionSystem : MonoBehaviour, IInteractable
                 break;
         }
     }
+    void ChangeMaterial(Material mat)
+    {
+        if (currentRenderer != null)
+            currentRenderer.material = mat;
+        else if (skinnedMeshRenderer != null)
+            skinnedMeshRenderer.material = mat;
+    }
 
     void SetDefaultmaterial()
     {
-        currentRenderer.material = defaultMaterial;
+        ChangeMaterial(defaultMaterial);
     }
     void SetButtonPanel()
     {
