@@ -93,7 +93,6 @@ public class FpsRayCaster : MonoBehaviour
                 currenthitPointObject.transform.SetParent(hit.transform);
                 currenthitPointObject.transform.position = hit.point;
                 this.lastInteractionPoint = currenthitPointObject;
-                Debug.Log($"Current Mode {this.currentMode}");
                 rslt.Interact(this.currentMode);
                 rslt.IsAimed = true;
                 this.IsFocused = true;
