@@ -79,6 +79,7 @@ public class NPC_MovementController : NPC_Base
         base.OnTriggerEnter(other);
         if (other.gameObject.CompareTag(TagNames.DangerObj.ToString()))
         {
+            Debug.Log($"This Object is Collided with {other.gameObject}", other.gameObject);
             Vector3 hitPoint = other.gameObject.GetComponent<Collider>().ClosestPoint(transform.position);
             cachedchrusParticle.transform.position = hitPoint;
             cachedchrusParticle.GetComponent<ParticleSystem>().Play();

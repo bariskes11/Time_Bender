@@ -13,6 +13,9 @@ public class FpsRayCaster : MonoBehaviour
     LayerMask raycastLayers;
     [SerializeField]
     GameObject hiPointObject;
+
+    [SerializeField]
+    bool isFollowingTarget=true;
     #endregion
     #region Fields
     Camera mainCam;
@@ -72,11 +75,14 @@ public class FpsRayCaster : MonoBehaviour
         {
             this.lastInteractionPoint = null;
         }
-        if (!fpsController.IsMoving && this.lastInteractionPoint!=null)
+        if (!fpsController.IsMoving && this.lastInteractionPoint!=null && this.isFollowingTarget)
         {
-           
+        
+            
             this.transform.LookAt(this.lastInteractionPoint.transform);
         }
+
+
         ray = mainCam.ViewportPointToRay(new Vector3(.5F, .5F, 0));//center of screen
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, raycastLayers))
         {

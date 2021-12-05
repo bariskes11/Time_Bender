@@ -20,21 +20,46 @@ public class ObjectControllerBase : NPC_Base
     Rigidbody rgdbdy;
     float currentFalDownSpeed;
     #endregion
+
+    #region Properties
+    private bool isEnabledOnTrigger;
+    public bool IsEnabledOnTrigger
+    {
+        get => this.isEnabledOnTrigger;
+        set => this.isEnabledOnTrigger = value;
+    }
+        
+    
+    #endregion
+
     #region Unity Fields
 
 
     protected override void Start()
     {
         base.Start();
+        this.IsEnabledOnTrigger = false;
         rgdbdy = this.GetComponent<Rigidbody>();
         currentFalDownSpeed = normalSpeed;
         rgdbdy.constraints = RigidbodyConstraints.FreezeAll;
+        
     }
     protected override void Update()
     {
         //base.Update();
         if (!iscontrolstarted)
              return;
+
+        if (this.IsEnabledOnTrigger)
+        {
+            rgdbdy.velocity = Vector3.zero;
+            return;
+        }
+        else
+        {
+            
+        }
+            
         
        // if (this.interaction.IsAimed)
        // {

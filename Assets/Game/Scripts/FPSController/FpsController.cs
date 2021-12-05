@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class FpsController : MonoBehaviour
 {
+    [SerializeField]
+    bool changeAngleOnFinish = true;
 
     [SerializeField]
     float mouseSensitivity;
@@ -72,8 +74,7 @@ public class FpsController : MonoBehaviour
     {
         Debug.Log($"Look At Target Point");
         this.isControlEnabled = false;
-        // looks at final target point
-        
+        // looks at final target point   
         Vector3 look = pos - this.transform.position;
         Quaternion lookr = Quaternion.LookRotation(look, Vector3.up);
         transform.DORotateQuaternion(lookr, .3F);
@@ -91,6 +92,8 @@ public class FpsController : MonoBehaviour
     }
     void LookAtFinishPart()
     {
+        if (!changeAngleOnFinish)
+            return;
         Vector3 finishPos = GameObject.FindObjectOfType<SuccesPoint>().transform.position;
         LookAtTargetPoint(finishPos);
 
