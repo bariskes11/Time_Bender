@@ -54,6 +54,7 @@ public class CarChrushSystem : MonoBehaviour
             cachedChrushParticle.GetComponent<ParticleSystem>().Play();
             // find player camera and rotate toward fail point
             FindObjectOfType<FpsController>().LookAtTargetPoint(cachedChrushParticle.transform.position);
+            cachedChrushParticle.GetComponent<AudioSource>().Play();
             // stop all cars
 
             EventManager.OnGameFail.Invoke();

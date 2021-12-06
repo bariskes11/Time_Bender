@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MultipleTreadsLevelPassCheck : MonoBehaviour
 {
     #region Unity Fields
@@ -13,6 +14,7 @@ public class MultipleTreadsLevelPassCheck : MonoBehaviour
 
     #region Fields
     List<CarChrushSystem> carcrushlist;
+    AudioSource audiosource;
     #endregion
 
     #region Unity Methods
@@ -20,6 +22,7 @@ public class MultipleTreadsLevelPassCheck : MonoBehaviour
     private void Start()
     {
         carcrushlist= GameObject.FindObjectsOfType<CarChrushSystem>().ToList();
+        audiosource = this.GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +33,7 @@ public class MultipleTreadsLevelPassCheck : MonoBehaviour
             other.GetComponent<CarChrushSystem>().IsSaved = true;
             this.CheckAndRiseEvent();
             confettiOnTriggered?.Play();
+            audiosource.Play();
         }
     }
 
