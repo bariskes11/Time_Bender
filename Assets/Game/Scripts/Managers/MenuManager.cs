@@ -6,6 +6,7 @@ using static PublicHardCodeds;
 using DG.Tweening;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using YsoCorp.GameUtils;
 
 public class MenuManager : SingletonCreator<MenuManager>
 {
@@ -31,7 +32,11 @@ public class MenuManager : SingletonCreator<MenuManager>
     GameObject LosePanel;
     [SerializeField]
     GameObject TaptoPlayPanel;
-   
+
+    #region  Fields
+    YCManager YSOManager;
+    #endregion
+
 
     private void Awake()
     {
@@ -43,6 +48,7 @@ public class MenuManager : SingletonCreator<MenuManager>
         EventManager.OnGameSuccess.AddListener(this.SetWinPanel);
         EventManager.OnGameFail.AddListener(this.SetLosePanel);
         txtLvlIndex.text = $"Level { SceneManager.GetActiveScene().buildIndex}";
+        YSOManager = this.GetComponentInChildren<YCManager>();
         SetTapToPlayPanel();
     }
     void DisableAllPanels()
@@ -68,6 +74,7 @@ public class MenuManager : SingletonCreator<MenuManager>
         DisableAllPanels();
         InGamePanel.SetActive(true);
         EventManager.OnGameStarted.Invoke();
+        YSOManager.OnGameStarted(SceneManager.GetActiveScene().buildIndex);
 
 
     }
@@ -77,6 +84,7 @@ public class MenuManager : SingletonCreator<MenuManager>
         currentGameStat = GameStats.Win;
         DisableAllPanels();
         WinPanel.SetActive(true);
+        YSOManager.OnGameFinished(true);
     }
 
     public void SetLosePanel()
@@ -84,6 +92,7 @@ public class MenuManager : SingletonCreator<MenuManager>
         currentGameStat = GameStats.Lose;
         DisableAllPanels();
         StartCoroutine(waitTimeOut());
+        YSOManager.OnGameFinished(true);
 
     }
 
