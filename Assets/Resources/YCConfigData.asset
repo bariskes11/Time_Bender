@@ -13,11 +13,24 @@ MonoBehaviour:
   m_Name: YCConfigData
   m_EditorClassIdentifier: 
   gameYcId: 2188c9
+  InAppRemoveAds: 
+  InAppRemoveAdsCanRemoveInBanner: 1
   ABVersion: 1
   ABForcedSample: 
   ABSamples: []
+  BannerDisplayOnInit: 1
+  InterstitialInterval: 20
   Name: Time Bender
   FbAppId: 1114269782676326
+  appleId: 
   MmpAdjust: 0
   MmpAdjustAppToken: 
   MmpTenjin: 1
+  AdMobAndroidAppId: 
+  AdMobIosAppId: 
+  IosInterstitial: 
+  IosRewarded: 
+  IosBanner: 
+  AndroidInterstitial: 
+  AndroidRewarded: 
+  AndroidBanner: 
