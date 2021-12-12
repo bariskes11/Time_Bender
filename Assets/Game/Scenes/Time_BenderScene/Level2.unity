@@ -1038,6 +1038,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2008535901}
     m_Modifications:
+    - target: {fileID: 5049145799498155542, guid: ec565d1c612018d45819c1346662645b, type: 3}
+      propertyPath: fasterMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d68b153268249b49b45d34eb536ff35, type: 2}
+    - target: {fileID: 5049145799498155542, guid: ec565d1c612018d45819c1346662645b, type: 3}
+      propertyPath: slowerMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9062f09a969261043826b0c105f1dac7, type: 2}
+    - target: {fileID: 5049145799498155542, guid: ec565d1c612018d45819c1346662645b, type: 3}
+      propertyPath: interactionMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: d1d0ccfb78ec44645b57b2fcf3579d00, type: 2}
     - target: {fileID: 6404180021485868109, guid: ec565d1c612018d45819c1346662645b, type: 3}
       propertyPath: m_Constraints
       value: 0

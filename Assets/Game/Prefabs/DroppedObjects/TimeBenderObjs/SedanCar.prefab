@@ -114587,9 +114587,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f183c1a547ad8740bbddc73c94fee9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactionMaterial: {fileID: 2100000, guid: a192b41661c597b47a48af006f713366, type: 2}
-  fasterMaterial: {fileID: 2100000, guid: 18f0527860464e94a966efa20a2420b1, type: 2}
-  slowerMaterial: {fileID: 2100000, guid: ebd3fe6a0bda3f042b68c0b01635b7ab, type: 2}
+  interactionMaterial: {fileID: 2100000, guid: 1e98df93793486f449718a045edbc795, type: 2}
+  fasterMaterial: {fileID: 2100000, guid: fd152642925fbfa409b062985955f370, type: 2}
+  slowerMaterial: {fileID: 2100000, guid: 4c6b0c54f170dc2478216b9e8a5219be, type: 2}
 --- !u!114 &3696839544345237915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114652,7 +114652,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ae4870cba172f524491e4431ce936a9d, type: 2}
+  - {fileID: 2100000, guid: 45921276b872a5a4b8ceadf53f3bb265, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

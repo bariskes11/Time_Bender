@@ -34,7 +34,7 @@ public class MenuManager : SingletonCreator<MenuManager>
     GameObject TaptoPlayPanel;
 
     #region  Fields
-   
+    bool isGameFinished = false;
 
     #endregion
 
@@ -42,6 +42,7 @@ public class MenuManager : SingletonCreator<MenuManager>
     private void Awake()
     {
         instance = this;
+        this.isGameFinished = false;
         DOTween.Init();
         DOTween.SetTweensCapacity(500, 500);
         currentGameStat = GameStats.TapToPlay;
@@ -89,11 +90,13 @@ public class MenuManager : SingletonCreator<MenuManager>
 
     public void SetLosePanel()
     {
-        currentGameStat = GameStats.Lose;
+        if (this.isGameFinished) return;
+            
+            currentGameStat = GameStats.Lose;
         DisableAllPanels();
         StartCoroutine(waitTimeOut());
         YCManager.instance.OnGameFinished(true);
-
+        this.isGameFinished = true;
     }
 
 

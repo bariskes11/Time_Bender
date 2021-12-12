@@ -6,7 +6,7 @@ using UnityEngine;
 public class ObjectControllerBase : NPC_Base
 {
     #region Unity Fields
-    
+
     [SerializeField]
     float normalSpeed;
     [SerializeField]
@@ -28,8 +28,8 @@ public class ObjectControllerBase : NPC_Base
         get => this.isEnabledOnTrigger;
         set => this.isEnabledOnTrigger = value;
     }
-        
-    
+
+
     #endregion
 
     #region Unity Fields
@@ -42,13 +42,18 @@ public class ObjectControllerBase : NPC_Base
         rgdbdy = this.GetComponent<Rigidbody>();
         currentFalDownSpeed = normalSpeed;
         rgdbdy.constraints = RigidbodyConstraints.FreezeAll;
-        
+        EventManager.OnGameFail.AddListener(DisableControls);
+
     }
     protected override void Update()
     {
         //base.Update();
         if (!iscontrolstarted)
-             return;
+        {
+            rgdbdy.velocity = Vector3.zero;
+            return;
+        }
+            
 
         if (this.IsEnabledOnTrigger)
         {
@@ -57,15 +62,15 @@ public class ObjectControllerBase : NPC_Base
         }
         else
         {
-            
+
         }
-            
-        
-       // if (this.interaction.IsAimed)
-       // {
+
+
+        // if (this.interaction.IsAimed)
+        // {
         rgdbdy.velocity = direction * currentFalDownSpeed;
 
-      //  }
+        //  }
 
     }
     #endregion
@@ -99,6 +104,11 @@ public class ObjectControllerBase : NPC_Base
         rgdbdy.velocity = Vector3.zero;
         rgdbdy.angularVelocity = Vector3.zero;
         rgdbdy.constraints = RigidbodyConstraints.FreezeAll;
+    }
+
+    private void DisableControls()
+    {
+        this.iscontrolstarted = false;
     }
 
 
